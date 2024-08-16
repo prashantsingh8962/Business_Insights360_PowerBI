@@ -36,7 +36,7 @@ A project charter is a short document describing the entire project. We will use
 5. Basics Understanding:
    * Atliq Hardware sells its products to customers(Croma, Flipkart, Best Buy) and this customer of AtliQ Hardware sells further to consumers.
    * AtliQ hardware uses two platforms brick & mortar(Croma, Best Buy) and e-commerce(Amazon, Flipkart).
-   * AtliQ Hardware sells its product<br>
+   * AtliQ Hardware sells its product through channel<br>
                     1. directly also in its own AtliQ store, AtliQ exclusive, etc.<br>
                     2. Retailer in Croma, Amazon, etc.<br>
                     3. distribution in Neptune then they further distributed to their sub mall like Babu, kim-cho, etc then consumer.<br>
@@ -141,8 +141,20 @@ A project charter is a short document describing the entire project. We will use
     gdb056:<br>
            1. freight_cost<br>
            2. manufacturing_cost<br>
-           3. post_invoice_deductions<br>
-           4. gross_price<br>
+           3. pre_invoice_deductions<br>
+           4. post_invoice_deductions<br>
+           5. gross_price<br>
+
+11. We connect our MySql database server with Power BI. While doing so, it needs an outside connector to download. we did it.
+     [Connector](https://dev.mysql.com/downloads/connector/net/)
+
+12. Power Bi automatically makes a relation between tables. to stop this feature, we go to options > Data load > uncheck the "Autodetect relation after data is loaded." 
+    feature.
+
+13. In the transform data option, it is the power query editor in Power BI. If you want a quick insight into dimension tables you can go to the view option, enable column distribution, and column profile. it only allows 1000 rows  therefore mostly used for dimensions tables.
+     * column profiling can also be done for the entire dataset but it will impact the query load time.
+
+14. 
      
 
 
