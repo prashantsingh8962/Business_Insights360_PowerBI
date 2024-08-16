@@ -121,12 +121,29 @@ A project charter is a short document describing the entire project. We will use
     <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Difference%20DA%2CSE%2CDE.png" class="center">
 
 
-8. We have a Data catalog that looks like this.
+8. We have a Data catalog that looks like this.(We need these DB Servers gdb056 & gdb041 as per our requirements)
 
    
     <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Data%20Catalog.png" class="center">
 
 
+9. We installed MySQL and opened both files gdb056 & gdb041 in MySQL <br>
+     [Link](https://dev.mysql.com/downloads/installer/)
+    
+10. Exploring Data: <br>
+     gdb041:<br>
+           1. dim_customer<br>
+           2. dim_market<br>
+           3. dim_product<br>
+           4. fact_forecast_monthly<br>
+           5. fact_sales_monthly<br>
+
+    gdb056:<br>
+           1. freight_cost<br>
+           2. manufacturing_cost<br>
+           3. post_invoice_deductions<br>
+           4. gross_price<br>
+     
 
 
 
