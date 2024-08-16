@@ -121,6 +121,12 @@ A project charter is a short document describing the entire project. We will use
     <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Difference%20DA%2CSE%2CDE.png" class="center">
 
 
+8. We have a Data catalog that looks like this.
+
+   
+    <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Data%20Catalog.png" class="center">
+
+
 
 
 
