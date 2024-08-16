@@ -59,7 +59,7 @@ A project charter is a short document describing the entire project. We will use
     <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/KIckoff%20meeting.png" class="center">
 
  
-7. Some data related terms:<br>
+7. Some data-related terms:<br>
    ### * OLTP Vs OLAP : <br>
      ### OLAP (Online Analytical Processing):<br>
      1. Purpose: Primarily used for data analysis and decision-making. It enables complex queries and reports that involve large volumes of historical data.<br>
@@ -79,10 +79,52 @@ A project charter is a short document describing the entire project. We will use
 
      ### Key Difference:
      1. OLAP is for analysis and decision-making, involving complex queries on large datasets.<br>
-     2. OLTP is for everyday transactions, focusing on fast, efficient processing of small, quick queries.<br>
+     2. OLTP is for everyday transactions, focusing on fast, efficient processing of small, quick queries.
 
      
     <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/OLTP%20Vs%20OLAP.png" class="center">
+
+
+   ### * Data analyst Vs Data engineer Vs Software engineer : <br>
+        
+      ### Data Analyst:<br>
+      1. Role: Focuses on interpreting data to provide actionable insights. They analyze large datasets to find trends, patterns, and correlations that help inform business 
+         decisions.<br>
+      2. Skills: Proficient in data visualization tools (e.g., Tableau, Power BI), statistical analysis, SQL, and Excel. Strong understanding of business intelligence.<br>
+      3. Tasks: Cleaning and organizing raw data, creating reports, and communicating findings to stakeholders.<br>
+
+      ### Data Engineer:<br>
+      1. Role: Designs, builds, and maintains the infrastructure and systems that enable data collection, storage, and access. They ensure that data is accessible, 
+         reliable, and well-structured for analysis.<br>
+      2. Skills: Expertise in data pipelines, ETL (Extract, Transform, Load) processes, databases, cloud platforms (e.g., AWS, Azure), and programming languages like 
+         Python, Java, or Scala.<br>
+      3. Tasks: Building data warehouses, developing data pipelines, and optimizing data storage for performance and scalability.<br>
+
+      ### Software Engineer:
+      1. Role: Develops, tests, and maintains software applications. They are responsible for building the software systems that users interact with, ranging from web 
+         applications to mobile apps and backend services.<br>
+      2. Skills: Proficient in programming languages (e.g., Python, Java, C++), software development frameworks, version control (e.g., Git), and problem-solving.<br>
+      3. Tasks: Writing and reviewing code, debugging software, collaborating with other engineers to design and implement new features, and ensuring the software meets 
+         quality standards.<br>
+
+      ### Key Differences:<br>
+            Focus:<br>
+                  Data Analysts focus on extracting insights from data.<br>
+                  Data Engineers focus on building systems to collect and manage data.<br>
+                  Software Engineers focus on creating software applications.<br>
+             End Goal:<br>
+                  Data Analysts provide business insights.<br>
+                  Data Engineers ensure data is accessible and reliable.<br>
+                  Software Engineers deliver functional software products.<br>
+
+   
+    <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Difference%20DA%2CSE%2CDE.png" class="center">
+
+
+
+
+
+
 
 
     
