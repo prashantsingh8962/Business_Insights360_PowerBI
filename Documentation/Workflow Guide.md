@@ -10,15 +10,16 @@
 
 
 2. In response, Stephen Singh(Analytics Director) emailed Tony Sharma(Senior Data Analyst) to share project details and ask for a call with the PO.
+ 
    <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Stephen%20email.png" class="center">
 
 
-3. After That Tony Sharma sent an email to Nick Puri(Product Owner) for a Project Kickoff Meeting.
+4. After That Tony Sharma sent an email to Nick Puri(Product Owner) for a Project Kickoff Meeting.
 
     <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Tony%20email%20to%20Nick.png" class="center">
 
 
-4. During the time Tony Sharma does some homework, assign a team(me, Prashant) and also create a Project Charter for the kick-off meeting.
+5. During the time Tony Sharma does some homework, assign a team(me, Prashant) and also create a Project Charter for the kick-off meeting.
 
    <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Project%20Charter.png" class="center">
 
@@ -40,12 +41,12 @@ A project charter is a short document describing the entire project. We will use
                     2. Retailer in Croma, Amazon, etc.
                     3. distribution in Neptune then they further distributed to their sub mall like Babu, kim-cho,etc then consumer.
    * Profit & loss statement:
-                    1. Gross Margin
-                    2. Pre-invoice Deduction
-                    3. Net Invoice Sales
-                    4. Post-invoice sales : Promotional offers + Placement fees + Performance rebate
-                    5. Net sales: Net sales are basically the revenue of a company.
-                    6. Cost of Good Sold(COGS) : Manufacturing cost + Freight(Transporation) + Other cost.
+                    1. Gross Margin <br>
+                    2. Pre-invoice Deduction<br>
+                    3. Net Invoice Sales<br>
+                    4. Post-invoice sales : Promotional offers + Placement fees + Performance rebate<br>
+                    5. Net sales: Net sales are basically the revenue of a company.<br>
+                    6. Cost of Good Sold(COGS) : Manufacturing cost + Freight(Transporation) + Other cost.<br>
 
  <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/P%26L%20Concepts.png" class="center">
 
