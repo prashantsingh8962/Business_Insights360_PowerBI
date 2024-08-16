@@ -25,22 +25,22 @@
 
 
 ### Project Charter: 
-A project charter is a short document describing the entire project. We will use a tool called Mural for this and cover few important dimensions of the project such as,
--> Project goals
--> Key stakeholders
--> Hopes and fears
--> Risks
--> Timeline
+A project charter is a short document describing the entire project. We will use a tool called Mural for this and cover a few important dimensions of the project such as,<br>
+-> Project goals<br>
+-> Key stakeholders<br>
+-> Hopes and fears<br>
+-> Risks<br>
+-> Timeline<br>
 
 
 5. Basics Understanding:
    * Atliq Hardware sells its products to customers(Croma, Flipkart, Best Buy) and this customer of AtliQ Hardware sells further to consumers.
    * AtliQ hardware uses two platforms brick & mortar(Croma, Best Buy) and e-commerce(Amazon, Flipkart).
-   * AtliQ Hardware sells its product
-                    1. directly also in its own AtliQ store, AtliQ exclusive, etc.
-                    2. Retailer in Croma, Amazon, etc.
-                    3. distribution in Neptune then they further distributed to their sub mall like Babu, kim-cho,etc then consumer.
-   * Profit & loss statement:
+   * AtliQ Hardware sells its product<br>
+                    1. directly also in its own AtliQ store, AtliQ exclusive, etc.<br>
+                    2. Retailer in Croma, Amazon, etc.<br>
+                    3. distribution in Neptune then they further distributed to their sub mall like Babu, kim-cho,etc then consumer.<br>
+   * Profit & loss statement:<br>
                     1. Gross Margin <br>
                     2. Pre-invoice Deduction<br>
                     3. Net Invoice Sales<br>
@@ -49,6 +49,11 @@ A project charter is a short document describing the entire project. We will use
                     6. Cost of Good Sold(COGS) : Manufacturing cost + Freight(Transporation) + Other cost.<br>
 
  <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/P%26L%20Concepts.png" class="center">
+
+
+ 6. 
+
+ 
 
                     
 
