@@ -39,19 +39,58 @@ A project charter is a short document describing the entire project. We will use
    * AtliQ Hardware sells its product<br>
                     1. directly also in its own AtliQ store, AtliQ exclusive, etc.<br>
                     2. Retailer in Croma, Amazon, etc.<br>
-                    3. distribution in Neptune then they further distributed to their sub mall like Babu, kim-cho,etc then consumer.<br>
+                    3. distribution in Neptune then they further distributed to their sub mall like Babu, kim-cho, etc then consumer.<br>
    * Profit & loss statement:<br>
-                    1. Gross Margin <br>
-                    2. Pre-invoice Deduction<br>
-                    3. Net Invoice Sales<br>
+                    1. Gross Price: Initial price of the Product(AtliQ)<br>
+                    2. Pre-invoice Deduction: Discount given by the company(AtliQ)<br>
+                    3. Net Invoice Sales: Gross Price - Pre-invoice Deduction<br>
                     4. Post-invoice sales : Promotional offers + Placement fees + Performance rebate<br>
-                    5. Net sales: Net sales are basically the revenue of a company.<br>
-                    6. Cost of Good Sold(COGS) : Manufacturing cost + Freight(Transporation) + Other cost.<br>
+                    5. Net sales: Net sales are the revenue of a company(AtliQ)<br>
+                    6. Cost of Good Sold(COGS) : Manufacturing cost + Freight(Transporation) + Other cost<br>
+                    7. Gross Margin<br>
+
+     The profit and loss statement is the most important piece of analysis any company will need.
 
  <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/P%26L%20Concepts.png" class="center">
 
 
- 6. 
+ 6. Kickoff Meeting: We Had some questions to ask and At Last, we asked for benchmark no and a mockup dashboard layout from Nick Puri(Product Owner)
+
+    <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/KIckoff%20meeting.png" class="center">
+
+ 
+7. Some data related terms:<br>
+   ### * OLTP Vs OLAP : <br>
+     ### OLAP (Online Analytical Processing):<br>
+     1. Purpose: Primarily used for data analysis and decision-making. It enables complex queries and reports that involve large volumes of historical data.<br>
+     2. Data: Stores aggregated, historical data from various sources, often organized in a multidimensional schema (e.g., star or snowflake schema).<br>
+     3. Operations: Focuses on read-heavy operations such as data mining, trend analysis, and complex queries.<br>
+     4. Users: Typically used by business analysts, data scientists, and decision-makers for strategic planning.<br>
+     5. Performance: Optimized for query performance over large datasets, with response times suitable for complex analyses.<br>
+     Examples: Data warehousing systems, business intelligence tools like Tableau or Power BI.<br>
+
+     ### OLTP (Online Transaction Processing):<br>
+     1. Purpose: Designed to manage day-to-day transactional operations. It supports a large number of short, quick transactions.<br>
+     2. Data: Stores current, real-time data in a normalized schema, ensuring data integrity and consistency.<br>
+     3. Operations: Focuses on insert, update, delete, and simple queries, such as processing customer orders or banking transactions.<br>
+     4. Users: Typically used by front-line workers, such as cashiers, bank tellers, and customer service representatives.<br>
+     5. Performance: Optimized for fast query processing and maintaining data integrity in high-concurrency environments.<br>
+     Examples: Retail transaction systems, banking systems, CRM systems.<br>
+
+     ### Key Difference:
+     1. OLAP is for analysis and decision-making, involving complex queries on large datasets.<br>
+     2. OLTP is for everyday transactions, focusing on fast, efficient processing of small, quick queries.<br>
+
+     
+    <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/OLTP%20Vs%20OLAP.png" class="center">
+
+
+    
+
+
+
+
+
 
  
 
