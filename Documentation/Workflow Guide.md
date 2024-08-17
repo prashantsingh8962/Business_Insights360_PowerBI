@@ -177,7 +177,11 @@ Our Number fully matches with benchmark number means:<br>
 
    <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Our%20Nos.png" class=" center">
 
-@ Suppose our number does not match with the benchmark number, we find out the difference and reach out to the data engineer to find a resolution on this
+@ Suppose our number does not match with the benchmark number, we find out the difference and reach out to the data engineer to find a resolution to this.
+
+16. Star schema contains fact and dimension tables. Facts are transaction tables whereas dimensions are entity tables. When we connect them to build a data model, it creates something called a STAR schema.
+
+17.  
 
     
 
