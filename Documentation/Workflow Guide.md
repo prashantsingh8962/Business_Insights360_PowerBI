@@ -1,4 +1,4 @@
-## Business Insights detailed Worked Flow Guide (Step-by-Step)
+## Business Insights detailed WorkFlow Guide (Step-by-Step)
 
 1. Nick Puri (Product Owner) sent an email to Stephen Singh(Analytics Director) showing more details of the "Business Insights 360 Dashboard" project.
 
@@ -182,9 +182,9 @@ Our Number fully matches with benchmark number means:<br>
 16. Star schema contains fact and dimension tables. Facts are transaction tables whereas dimensions are entity tables. When we connect them to build a data model, it creates something called a STAR schema.
 
 17. Product owners share the same mockup dashboard.
-     Year-to-day: sum of all available actuals estimate.
-     year-to-go: sum of all remaining forecast estimates.
-    If we sum them two we get a landing estimate.
+     Year-to-day: sum of all available actuals estimate.<br>
+     year-to-go: sum of all remaining forecast estimates.<br>
+    If we sum them two we get a landing estimate.<br>
 
     <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Finance%20View.png" class=" center">
 
