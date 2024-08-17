@@ -181,7 +181,21 @@ Our Number fully matches with benchmark number means:<br>
 
 16. Star schema contains fact and dimension tables. Facts are transaction tables whereas dimensions are entity tables. When we connect them to build a data model, it creates something called a STAR schema.
 
-17.  
+17. Product owners share the same mockup dashboard.
+     Year-to-day: sum of all available actuals estimate.
+     year-to-go: sum of all remaining forecast estimates.
+    If we sum them two we get a landing estimate.
+
+    <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Finance%20View.png" class=" center">
+
+   <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Sales%20View.png" class=" center">
+
+   <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Marketing%20View.png" class=" center">
+
+   <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Supply%20Chain%20view.png" class=" center">
+
+
+18. 
 
     
 
