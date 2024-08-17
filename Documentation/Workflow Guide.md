@@ -151,10 +151,12 @@ A project charter is a short document describing the entire project. We will use
 12. Power Bi automatically makes a relation between tables. to stop this feature, we go to options > Data load > uncheck the "Autodetect relation after data is loaded." 
     feature.
 
-13. In the transform data option, it is the power query editor in Power BI. If you want a quick insight into dimension tables you can go to the view option, enable column distribution, and column profile. it only allows 1000 rows  therefore mostly used for dimensions tables.
+13. In the transform data option, it is the power query editor in Power BI. If you want a quick insight into dimension tables you can go to the view option, enable column 
+    distribution, and column profile. it only allows 1000 rows  therefore mostly used for dimensions tables.
      * column profiling can also be done for the entire dataset but it will impact the query load time.
 
-14. We make groups: all dim tables in the "dimensions" group and all fact tables in the "Facts" group
+14. ### Create a date table in power query:
+    We make groups: all dim tables in the "dimensions" group and all fact tables in the "Facts" group
     We are adding a new query in the power query editor from a new source -> blank query.
 
     We using [M language](https://learn.microsoft.com/en-us/powerquery-m/) to do this. <br>
@@ -166,8 +168,17 @@ A project charter is a short document describing the entire project. We will use
     Add a custom column "Fiscal Year", using this formula =Date.Year([month]) -> This will fetch the same year but we want the fiscal year then we use this formula
     =Date.Year(date.AddMonths([month],4))
 
-15. 
-    
+15. ### Benchmark Validation:
+    We have to verify All these benchmarks with our numbers.
+
+    <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Benchmark%20Nos.png" class=" center">
+
+Our Number fully matches with benchmark number means:<br>
+
+   <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Our%20Nos.png" class=" center">
+
+@ Suppose our number does not match with the benchmark number, we find out the difference and reach out to the data engineer to find a resolution on this
+
     
 
 
