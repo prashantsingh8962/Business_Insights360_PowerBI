@@ -154,8 +154,21 @@ A project charter is a short document describing the entire project. We will use
 13. In the transform data option, it is the power query editor in Power BI. If you want a quick insight into dimension tables you can go to the view option, enable column distribution, and column profile. it only allows 1000 rows  therefore mostly used for dimensions tables.
      * column profiling can also be done for the entire dataset but it will impact the query load time.
 
-14. 
+14. We make groups: all dim tables in the "dimensions" group and all fact tables in the "Facts" group
+    We are adding a new query in the power query editor from a new source -> blank query.
+
+    We using [M language](https://learn.microsoft.com/en-us/powerquery-m/) to do this. <br>
      
+    Rename it as dim_date. use this formula in the advanced editor of dim_date to find the date as per fiscal year. It is a list, we can convert to table   <br>
+    Date ={Number.From(#date(2017,9,1))..Number.From(#date(2022,12,31))}   <br>
+
+    Add another column month from the add column section, in the option, the start of the month bcoz we want to extract the fiscal year later from it. <br>
+    Add a custom column "Fiscal Year", using this formula =Date.Year([month]) -> This will fetch the same year but we want the fiscal year then we use this formula
+    =Date.Year(date.AddMonths([month],4))
+
+15. 
+    
+    
 
 
 
