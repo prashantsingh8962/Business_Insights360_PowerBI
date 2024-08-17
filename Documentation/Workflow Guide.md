@@ -181,7 +181,7 @@ Our Number fully matches with benchmark number means:<br>
 
 16. Star schema contains fact and dimension tables. Facts are transaction tables whereas dimensions are entity tables. When we connect them to build a data model, it creates something called a STAR schema.
 
-17. Product owners share the same mockup dashboard.
+17. Product owners share the same mockup dashboard.<br>
      Year-to-day: sum of all available actuals estimate.<br>
      year-to-go: sum of all remaining forecast estimates.<br>
     If we sum them two we get a landing estimate.<br>
@@ -195,8 +195,30 @@ Our Number fully matches with benchmark number means:<br>
    <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Supply%20Chain%20view.png" class=" center">
 
 
-18. 
+18. We start in power query finding the current month. we create a reference of fact_sales_monthly table and use the formula: = List.Max(#"gdb041 fact_sales_monthly"[date])
+    then, we get the last sales month which is this "01-12-2021 00:00:00". we do reference if fact_sales_monthly update, it is also updated.<br>
 
+    We create the "remaining forecast" table with reference to fact_forecast_monthly by filtering on dates greater than "lastsalesmonth". we used M language :<br>
+      = Table.SelectRows(Source, each ([date] > Lastsalesmonth))<br>
+
+    We use the append(rowise joining) option to append two tables fact_sales_monthly & remaining forecast and call it "FactActualsForecast" table. doing this, we find separate columns of sales_quantity and forecast_quantity and so many null values in these columns but we want them in one column. we changed this sales_quantity column and forecast_quantity column as qty in both the tables separately.
+
+19. We add a Fiscal year column in "FactActualsForecast" using the custom column: Date.Year(Date.AddMonths([date],4)) <br>
+    we merge(left join) two tables "FactActualsForecast" and "gross_price". we got a table with an added gross_price column.<br>
+    we create a custom column for gross_price_amt= [Qty] * [gross_price]<br>
+
+    We merge(left join) two tables "FactActualsForecast" and "pre_invoice_deductions". we got a table with an added pre_invoice_discount_pct column.<br>
+    we create a custom column for pre_invoice_discount_amt= [gross_price_amt] * [pre_invoice_discount_pct]<br>
+    we create a custom column for net_invoice_sales_amt= [gross_price_amt] - [pre_invoice_discount_amt]<br>
+
+
+    Power Query Best Practices<br>
+    -> Naming query steps<br>
+    -> grouping tables<br>
+    -> Disable load for some tables to improve performance<br>
+    -> Table naming convention<br>
+    
+    
     
 
 
