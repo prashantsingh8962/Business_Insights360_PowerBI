@@ -217,7 +217,35 @@ Our Number fully matches with benchmark number means:<br>
     -> grouping tables<br>
     -> Disable load for some tables to improve performance<br>
     -> Table naming convention<br>
-    
+
+20. - DAX Behaviour is like filter context in power BI.<br>
+    - Filter context is changed using CALCULATE Functions. It is changed to create measures that require a new filter context.<br>
+    - ALL is a filter function used together with the calculate.
+    - ALL removes the given column or table from the filter context.
+    - ALL removes all the columns or tables from the filter context except the specified ones.
+    - One can specify filters directly in the filter argument section of calculated functions.
+    - we can specify the column from another table in the filter argument as long as that table is connected using the data model.
+    - In case where you are using DAX measures in the filter argument section, you have to use filter() functions.
+    - DAX can be used to create both measures and calculated columns.
+    - Utilizing a var function in DAX offers added flexibility for writing complex functions.
+    - cross-verifying values manually is a valuable practice.
+    - Filter Context: Filter context is the set of values allowed in each column, based on filter constraints that were applied to the row or that are defined by filter 
+      expressions within the formula.(<> means "not equal to")
+    - The “Calculate “ function helps change the filter context. This function allows you to change the context in which an expression is evaluated.
+    - The filter function “ ALL ” returns all the rows in a table, or all the values in a column, ignoring any filters that might have been applied. This function is useful 
+      for clearing filters and creating calculations on all the rows in a table.
+    - The filter function “ ALLEXCEPT “ removes all context filters in the table except filters that have been applied to the specified columns.
+    - The filter function “ FILTER “ returns a table that represents a subset of another table or expression.
+    - Sometimes the data we're analyzing does not contain a particular field necessary to achieve the desired results. In such situations, calculated columns are useful. 
+      These columns use Data Analysis Expressions (DAX) formulas to define their values.
+    - Check out [Documentation](https://learn.microsoft.com/en-us/dax/filter-functions-dax)
+   
+21. Decision metrics:
+
+       <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Decision%20Metrics.png" class=" center">
+
+
+22. 
     
     
 
