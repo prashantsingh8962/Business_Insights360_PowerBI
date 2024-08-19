@@ -240,12 +240,43 @@ Our Number fully matches with benchmark number means:<br>
       These columns use Data Analysis Expressions (DAX) formulas to define their values.
     - Check out [Documentation](https://learn.microsoft.com/en-us/dax/filter-functions-dax)
    
-21. Decision metrics:
+21. Decision metrics: Power Query Vs DAX Measures Vs Created Calculate column
 
        <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Decision%20Metrics.png" class=" center">
 
 
-22. 
+22. we removed unwanted columns in the fact_sales_monthly table in the power query using the choose column options bcoz we can get that info from other tables. If we got to applied steps And see the Native query of doing this. you will a SQL syntax to extract desired columns.
+
+          select `date` as `date`,
+         `product_code` as `product_code`,
+         `customer_code` as `customer_code`,
+         `sold_quantity` as `Qty`
+          from `gdb041`.`fact_sales_monthly` `$Table`
+
+    After removing, these columns are not in Power BI but if you go and check the previous steps you will find those columns. these are only previews of 1000 rows.<br>
+
+    we do the same with fact_forecast_monthly table.(This concept is called [query folding](https://learn.microsoft.com/en-us/power-query/query-folding-basics).)<br>
+
+    Comparing DAX calculated columns with Power Query computed columns [Link](https://www.youtube.com/watch?v=-x2dLTtKiR8&t=679s)
+
+    We use a dimension table for slicing like stuff bcoz it contains all the unique things like years.
+
+    Doing query folding with fact_sales_monthly & fact_forecast_monthly, the FactActualsForecast table is also changed bcoz this was make transforming the source 
+    table.<br>
+
+    [Star schema](https://learn.microsoft.com/en-us/power-bi/guidance/star-schema)             [Snowflake Schema](https://learn.microsoft.com/en-us/power-bi/guidance/star-schema#snowflake-dimensions)
+
+    Connect fact and dimension tables. This is also called data modelling.<br>
+
+    We are connecting fiscal year but it shows many-to-many relationships. it shows many repetitions in both tables, it's hard to find a connection. so, we created a table of only the fiscal year using DAX. (Fiscal_year = ALLNOBLANKROW(dim_date[Fiscal Year])) we connect the post invoice deduction table, manufacturing cost table, and freight cost table.<br>
+    
+
+ <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Data%20Modelling.png" class=" center">
+
+
+ 28. Create Calculated Columns Using DAX
+
+
     
     
 
