@@ -384,3 +384,26 @@ All Required Measures:
   <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/P%26L%20Structure.png" class=" center">
 
 
+27. we create a P & L rows table. create a measure named P & L values using switch
+
+        P & L Values = 
+        SWITCH(true(),
+        max('P & L Rows'[Order]) = 1, [GS INR]/1000000,
+        max('P & L Rows'[Order]) = 2, [Pre Invoice Deduction INR]/1000000,
+        max('P & L Rows'[Order]) = 3, [NIS INR]/1000000,
+        max('P & L Rows'[Order]) = 4, [Post Invoice Deduction INR]/1000000,
+        max('P & L Rows'[Order]) = 5, [Post Invoice Other Deductions INR]/1000000,
+        max('P & L Rows'[Order]) = 6, [Total Post Invoice Deduction INR]/1000000,
+        max('P & L Rows'[Order]) = 7, [Net Sales]/1000000,
+        max('P & L Rows'[Order]) = 8, [Manufacturing Cost INR]/1000000,
+        max('P & L Rows'[Order]) = 9, [Freight Cost INR]/1000000,
+        max('P & L Rows'[Order]) = 10, [Other Cost INR]/1000000,
+        max('P & L Rows'[Order]) = 11, [Total COGS]/1000000,
+        max('P & L Rows'[Order]) = 12, [Gross Margin INR]/1000000,
+        max('P & L Rows'[Order]) = 13, [Gross Margin %]*100,
+        max('P & L Rows'[Order]) = 14, [Gross Margin / unit]
+        )
+
+
+29.  
+
