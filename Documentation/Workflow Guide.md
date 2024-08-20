@@ -330,10 +330,36 @@ Our Number fully matches with benchmark number means:<br>
 
  24. P & L checks: Verify by doing calculation manually and create these type of visuals.
 
-      <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/P%26L%20column%20verfiying.png" class=" center">
+ <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/P%26L%20column%20verfiying.png" class=" center">
 
 
  <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Calculator.png" class=" center">
 
 
-25. 
+
+25. DAX Studio : Optimize Report and Reduce File Size by 25 %<br>
+
+    In  power BI, our data first comes in power query then DAX.<br>
+
+    In power query, If we remove gross_price and pre_invoice_deductions, it automatically fetch data of these columns and does calculations bcoz we are connected to SQL. 
+    (cache memory).<br>
+
+    In DAX, we removed total_COGS_amt and gross_margin_amount bcoz it is derived from an existing column by simple calculation(+,-,etc). we can derive it dynamically.<br>
+
+    we go for 2 places of decimal digits.
+
+    
+ <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Data%20comes%20in%20powerBI.png" class=" center">
+
+- Computed columns can be created either in Power Query or in DAX. Each option has its pros and cons, you need to use a sense of judgment based on a given situation
+ 
+- Snowflake schema can be an extension of the star schema where dimension tables are further connected with other dimension tables
+ 
+- Data modeling is a very important part of the data analytics pipeline. A sincere effort should be spent in building the correct data model
+ 
+- CALCULATE is a frequently used, very important DAX function in Power BI. Mastering this function can make a lot of things easy for you
+ 
+- External tools such as DAX studio can be plugged into power bi for instrumentation and optimization
+
+
+### 26. Building Finance view: 
