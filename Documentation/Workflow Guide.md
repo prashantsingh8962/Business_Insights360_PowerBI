@@ -274,28 +274,55 @@ Our Number fully matches with benchmark number means:<br>
  <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Data%20Modelling.png" class=" center">
 
 
- 28. Create Calculated Columns Using DAX
+ 23. Create Calculated Columns Using DAX:<br>
+     In the process of creating P&L Table, you have created Gross Price, Pre-invoice deduction amount and Net invoice sales till now using Power Query. So, from now on, you 
+     will create the remaining columns required for P & L items using DAX (Data Analysis Expressions)<br>
+
+     We created a post_invoice column with respect to Customer code, product code, and date.
+
+          Post_Invoice_deductions = 
+          CALCULATE(max(post_invoice_deductions[discounts_pct]),
+          RELATEDTABLE(post_invoice_deductions))
+
+     for finding amt we use var res.(joining two tables)<br>
+
+           Post_Invoice_deductions = 
+           var res = CALCULATE(max(post_invoice_deductions[discounts_pct]),
+          RELATEDTABLE(post_invoice_deductions))
+          return res*(FactActualsForecast[Net_invoice_sales_amt])
+
+     then we did the same for the other_deductions column.(joining two tables)<br>
+
+           Post_Invoice_other_deductions = 
+           var res = CALCULATE(max(post_invoice_deductions[other_deductions_pct]),
+           RELATEDTABLE(post_invoice_deductions))
+           return res*(FactActualsForecast[Net_invoice_sales_amt])
+
+     then we create net sales<br>
+
+           Net_sales_amt = FactActualsForecast[Net_invoice_sales_amt]-FactActualsForecast[Post_Invoice_deductions]-FactActualsForecast[Post_Invoice_other_deductions]
+
+     we find manufacturing cost, freight_
+
+           Manufacturing_cost = 
+           var res = CALCULATE(max(manufacturing_cost[manufacturing_cost]),
+           RELATEDTABLE(manufacturing_cost))
+           return res*FactActualsForecast[Qty]
 
 
-    
-    
+           Freight_cost = 
+           var res = CALCULATE(max(freight_cost[freight_pct]),
+           RELATEDTABLE(freight_cost))
+           return res*FactActualsForecast[Net_sales_amt]
 
 
+           Other_cost = 
+           var res = CALCULATE(max(freight_cost[other_cost_pct]),
+           RELATEDTABLE(freight_cost))
+           return res*FactActualsForecast[Net_sales_amt]
 
+     we created Total_COGS_amt and Gross_margin_amt:<br>
 
+           Total_COGS_amt = FactActualsForecast[Manufacturing_cost]+FactActualsForecast[Freight_cost]+FactActualsForecast[Other_cost]
 
-
-    
-
-
-
-
-
-
- 
-
-                    
-
-
-
-
+           Gross_Margin_amt = FactActualsForecast[Net_sales_amt]-FactActualsForecast[Total_COGS_amt] 
