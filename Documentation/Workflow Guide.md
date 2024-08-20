@@ -410,3 +410,18 @@ All Required Measures:
 
 28. we created a Last year's Column (LY):
 
+        P & L LY = CALCULATE([P & L Values], SAMEPERIODLASTYEAR(dim_date[Date]))
+
+    We are also seeing the 2023 fiscal year for which we don't have data. We go to power query and filter to all fiscal years according to the availability of data and 
+    remove 2023.
+
+    We created a column in the fiscal year table named fy-description. it will also add "EST" in the last year because its forecast estimate values.
+
+           fy_descrption = 
+           var maxdate = CALCULATE(max(Fiscal_year[Fiscal Year]),all(Fiscal_year[Fiscal Year]))
+           return
+           IF(Fiscal_year[Fiscal Year] = maxdate, maxdate & " Est", Fiscal_year[Fiscal Year])
+
+       <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Fy-description.png" class=" center">
+
+29. 
