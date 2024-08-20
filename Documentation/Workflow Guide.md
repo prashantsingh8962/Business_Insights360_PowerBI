@@ -274,7 +274,7 @@ Our Number fully matches with benchmark number means:<br>
  <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Data%20Modelling.png" class=" center">
 
 
- 23. Create Calculated Columns Using DAX:<br>
+23. Create Calculated Columns Using DAX:<br>
      In the process of creating P&L Table, you have created Gross Price, Pre-invoice deduction amount and Net invoice sales till now using Power Query. So, from now on, you 
      will create the remaining columns required for P & L items using DAX (Data Analysis Expressions)<br>
 
@@ -325,4 +325,15 @@ Our Number fully matches with benchmark number means:<br>
 
            Total_COGS_amt = FactActualsForecast[Manufacturing_cost]+FactActualsForecast[Freight_cost]+FactActualsForecast[Other_cost]
 
-           Gross_Margin_amt = FactActualsForecast[Net_sales_amt]-FactActualsForecast[Total_COGS_amt] 
+           Gross_Margin_amt = FactActualsForecast[Net_sales_amt]-FactActualsForecast[Total_COGS_amt]
+
+
+ 24. P & L checks: Verify by doing calculation manually and create these type of visuals.
+
+      <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/P%26L%20column%20verfiying.png" class=" center">
+
+
+ <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Calculator.png" class=" center">
+
+
+25. 
