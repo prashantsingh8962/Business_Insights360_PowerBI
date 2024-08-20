@@ -386,6 +386,9 @@ All Required Measures:
 
 27. we create a P & L rows table. create a measure named P & L values using switch
 
+  <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/P%20%26%20L%20Rows.png" class=" center">
+
+
         P & L Values = 
         SWITCH(true(),
         max('P & L Rows'[Order]) = 1, [GS INR]/1000000,
@@ -405,5 +408,5 @@ All Required Measures:
         )
 
 
-29.  
+28. we created a Last year's Column (LY):
 
