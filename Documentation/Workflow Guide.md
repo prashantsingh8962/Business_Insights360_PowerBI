@@ -363,3 +363,24 @@ Our Number fully matches with benchmark number means:<br>
 
 
 ### 26. Building Finance view: 
+
+    ONLY FOR EXPLANATION :
+    we have to compared all Net sales  with India's net sales. we make measures:<br>
+    - NIS INR = SUM(FactActualsForecast[Net_invoice_sales_amt])
+    - NIS india INR = CALCULATE([NIS INR],dim_market[market]="India")
+    - Benchmark Var = [NIS INR]-[NIS india INR]
+    - GS INR = SUM(FactActualsForecast[gross_sale_amt])
+
+    we want to compared with last year (LY) also.
+    - NIS LY = CALCULATE([NIS INR], SAMEPERIODLASTYEAR(dim_date[Date]))
+
+All Required Measures: 
+
+ <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/All%20Measures.png" class=" center">
+
+
+ To make this:
+
+  <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/P%26L%20Structure.png" class=" center">
+
+
