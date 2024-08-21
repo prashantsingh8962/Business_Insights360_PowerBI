@@ -793,6 +793,86 @@ As you can see you have got YTD or YTG definition for each of the date values an
 
 
 ### 33. Finance View: Build Top Products, Market & Region Visuals
+  we created a two matrix, on rows (market, customer) and (segment,category)
+  values =   P & L values, P& L YoY chg% 
+
+34. Intermediate review with Nick Puri (product owner): he wants to add net profit rather than gross margin.
+
+        gross margin = 5
+        - ads & Promotion = 0.5
+        - other operational expenses = 0.5 (account fees + rent + utilities)
+        Net Profit: 4
+        (Net Profit is the profit)
+
+    Nick Puri shared an excel file of operational expenses.
+
+    we upload it in power Bi and two new columns in our main table FactActualsForecast. (Ads_promotions & other_operational_expense)
+
+        Ads_promotions = 
+           var res = CALCULATE(max(Operational_expenses[ads_promotions_pct]),
+           RELATEDTABLE('Operational_expenses'))
+           return res*FactActualsForecast[Net_sales_amt]
+
+        other_operational_expense = 
+           var res = CALCULATE(max(Operational_expenses[other_operational_expense_pct]),
+           RELATEDTABLE('Operational_expenses'))
+           return res*FactActualsForecast[Net_sales_amt]
+
+    then, create some measures on this,
+
+          Ads & Promotions = SUM(FactActualsForecast[Ads_promotions])
+         Other_operational-expenses = SUM(FactActualsForecast[other_operational_expense])
+         operational expense INR = [Ads & Promotions]+[Other_operational_expenses]
+         Net Profit INR = [Gross Margin INR]-[operational expense INR]
+         Net Profit % = DIVIDE([Net Profit INR],[Net Sales],0)
+
+we go power query to add 3 rows in P & L rows, 
+        
+	 Operational expense   15     Operational expense
+           Net profit          16         Net profit
+	   Net profit %         17        Net profit %
+
+
+we edit this P & L values table also. to all these measures in table.
+
+
+      P & L Values = 
+      var res = SWITCH(true(),
+     max('P & L Rows'[Order]) = 1, [GS INR]/1000000,
+     max('P & L Rows'[Order]) = 2, [Pre Invoice Deduction INR]/1000000,
+     max('P & L Rows'[Order]) = 3, [NIS INR]/1000000,
+     max('P & L Rows'[Order]) = 4, [Post Invoice Deduction INR]/1000000,
+     max('P & L Rows'[Order]) = 5, [Post Invoice Other Deductions INR]/1000000,
+     max('P & L Rows'[Order]) = 6, [Total Post Invoice Deduction INR]/1000000,
+     max('P & L Rows'[Order]) = 7, [Net Sales]/1000000,
+     max('P & L Rows'[Order]) = 8, [Manufacturing Cost INR]/1000000,
+     max('P & L Rows'[Order]) = 9, [Freight Cost INR]/1000000,
+     max('P & L Rows'[Order]) = 10, [Other Cost INR]/1000000,
+    max('P & L Rows'[Order]) = 11, [Total COGS]/1000000,
+    max('P & L Rows'[Order]) = 12, [Gross Margin INR]/1000000,
+    max('P & L Rows'[Order]) = 13, [Gross Margin %]*100,
+    max('P & L Rows'[Order]) = 14, [Gross Margin / unit],
+    max('P & L Rows'[Order]) = 15, [operational expense INR]/1000000,
+    max('P & L Rows'[Order]) = 16, [Net Profit INR]/1000000,
+    max('P & L Rows'[Order]) = 17, [Net Profit %]/100
+
+    )
+    return
+    if(HASONEVALUE('P & L Rows'[Description]),res , [Net Sales]/1000000)
+
+
+then, we see Operational expense, Net profit, and Net profit % in our P& L statement (magic happened).
+
+Some point:
+- Measure is a “Calculated Field” in Power BI DAX.
+- Understanding filter context is very fundamental to the design of Power BI tool. Based on filter context you will be able to figure out how slicing and dicing works and how to change filter context using calculate function.
+- A line chart is usually a wise choice to analyze trends over time. It is a useful practice to compare the current year's trend with last year's trend for a selected metric
+- While the gross margin is a useful metric, for senior management, visualizing net profit is even more important to understand the real profit.<br>
+  Net Profit = Gross Margin - Operational Expenses
+-Building BI dashboards is an iterative process. Sometimes in the middle of the project, you may have to import new datasets and rethink the whole design. Having an agile and open mindset helps the data analyst as well as the organization.
+
+
+## 35. Sales View : 
 
 
 
