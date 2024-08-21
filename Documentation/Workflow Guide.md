@@ -431,4 +431,199 @@ All Required Measures:
 
    <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Fy-description.png" class=" center">
 
-30. 
+### IMP 29. We created two new measures. 
+According to the mock-up, we need to create the YoY and YoY % values in the P & L table.
+    Hence we create the below two measures
+
+         P & L YoY Chg = [P & L values]-[P & L LY] // this measure will always provide the value change between selected year and previous year
+
+        P & L YoY Chg % = DIVIDE('Key Measures'[P & L YoY Chg], [P & L LY],0)*100 
+        // this measure will always provide the % change between the selected year and the previous year
+
+
+- After this,  Challenge – displaying the correct values in column header based on the selection in fy_desc
+
+
+If you notice, when you select 2020 IN fy_desc it does display the correct values of 2020 in the table but in the column header it still says ‘P & L values’. This is not an ideal solution for business users who want to take screenshots of this table or who reads the table without selecting a year. So, we need to display 2020 instead of ‘P & L values’ which means you need to display the selected year instead of  ‘P & L values’ in the column header.
+
+ 
+(You could simply rename the measure names – but the values won’t change dynamically. So, we are looking for a dynamic solution.)
+
+
+- Creating custom column headers (04:43 – 10:30)
+
+In our case, Power BI matrix uses the measure’s name as the column name. However, to provide the dynamic solution where the column header name will change based on the selection from Fy_desc, we need to create a custom column that will contain all the possible header names.
+
+
+Steps:
+⦁	Create a new column under a new table by using DAX which we can use as our column header.
+⦁	The output of this DAX formula is a table that should contain all the possible column header values for the P & L table
+
+⦁	You need to go to the modelling tab and select ‘New Table’
+
+⦁	Create a table called P & L Columns by using the formula below. Check the comments for an explanation of why each formula is used and the same is explained in the lecture.
+              
+         P & L Columns = 
+         var x = ALLNOBLANKROW(fiscal_year[fy_desc]) // this formula will fetch us all the values in fy_desc as the user can select any value from fy_desc 
+         return
+         UNION(                             // adding all the values from fy_desc with below values
+         ROW("Col Header", "LY"),           // ‘LY’ is a requirement from mock up 
+         ROW("Col Header", "YoY Chg"),     // ‘YoY Chg’ is a requirement from mock up
+         ROW("Col Header", "YoY Chg %"),  // ‘YoY Chg %’ is a requirement from mock up
+         x
+         )
+
+Now, as an output we will get a column called ‘Col Header’. This list is dynamic and will change if the fy_desc column changes in the future with new fiscal years.
+
+ 
+- Using the ‘Col Header’ as column values 
+
+Our next step is to convince the Power BI matrix to accept our ‘Col Header’ as the new column name and also make it react to the selections from ‘fy_desc’. Maybe it’s not that tough – let’s give it a try 
+Let’s do a quick experiment before that -> you can remove all the measures from matrix values except ‘P & L values’ and add the ‘Col Header’ in Columns.
+
+ 
+
+You can see that our hard-earned ‘P & L values’ measure is not working anymore and it is displaying the same values everywhere and also showing all the values of Col Header. 
+
+So, we need a new measure that will 
+1. Display the correct values for Line Item
+2. Show the correct Col Headers based on selection. For example, if you select 2020 in fy_desc you need to see only 2020, LY, YoY and YoY %. We need a new
+
+But don’t worry – we are not throwing ‘P & L values’ to the bin, it will become a part of our new formula -> “P & L Final Value” (trust me it’s final)
+
+
+- Creating P & L final value 
+
+Let’s recap our requirements once that this measure needs to fulfil
+
+1. Display the correct values for Line Item
+	- This can be done only when you map the [P & L values] to Col Header.
+2. Display the correct col headers or in other words, hide the irrelevant values from ‘Col Headers’ based on selection
+
+Let’s experiment to understand better -> 
+
+Create the below measure and add it to the visual
+   
+    P & L Final Value= 
+    SWITCH(TRUE(),
+    SELECTEDVALUE(fiscal_year[fy_desc])=MAX('P & L Columns'[Col Header]), [P & L values])
+
+ 
+
+You will see that we are able to achieve our goal partially as we can 
+1. Display the correct line-item value as per the selection
+2. Hide unwanted col headers – but we still need to show LY, YoY, and YoY %.
+
+Now you might wonder, how this formula works. Let’s break it down. 
+
+
+
+### IMP30. How P & L final value measure works (Part II)
+
+Note: Understanding this section will help you a long way in your Power BI reporting. So, please plan to spend a considerable amount of time on this. 
+
+Now, Consider an example – when you select 2020 in the fy_desc the following happens in the formula
+
+1. SWITCH(TRUE()   acts as an IF statement where it returns the value if the condition is true. 
+
+If the condition is false, it moves on to the next condition. 
+So in this formula, if SELECTEDVALUE of (fiscal_year[fy_desc]) is equal to MAX of ('P & L Columns'[Col Header] then the formula returns [P & L values].
+
+Note: Switch () is a good alternative to avoid multiple IF statements.
+
+2. SELECTEDVALUE (fiscal_year[fy_desc]) returns a single value which is 2020.
+
+This is quite straightforward – it simply returns whatever value you select in fy_desc.
+
+3. MAX ('P & L Columns'[Col Header]) could return all the values in Col Header including 2020.
+
+I hear you loud! You are shouting – Should it not return only one value which is the Max of ‘Col Header’?
+ 
+The answer is Yes and No. It depends upon the ‘Filter Context’. Now, remember the Filter Context that we learned a few lectures ago -> Simplified: Calculate Function ?
+
+Let’s do a quick recap anyway.
+
+Every measure sticks to the natural filter context of the Power BI report which means a measure will respect all the external filters (slicers and page, visual, report filters) and internal filters (dimensions inside visual)
+
+For example, create a measure Max col Header = MAX('P & L Columns'[Col Header]) and add it as a matrix visual on the report page. As you expected, this displays the single maximum value of the Col Header which is ‘YoY Chg %’.
+
+
+ 
+
+
+Now what if you add the ‘Col Header’ column to this matrix as a row?
+
+ 
+
+ 
+You can see that formula gets executed at each row. This means at the row level 2020 of Col Header there is only one value available which is 2020 and hence the MAX('P & L Columns'[Col Header]) will return 2020 for this row and the respective row value for each row. 
+
+The result is the same if you place the ‘Col Header’ in columns. The formula gets executed at each column level.
+
+ 
+Since you don’t want all the Col Header values and only the fy_desc value you select, you need to set the output of your measure based on condition. 
+
+For example, I need to display the text “Get Job Ready” only for the year I select. This can be achieved by the following measure 
+
+Max Col Header_Dynamic = 
+
+IF(SELECTEDVALUE(fiscal_year[fy_desc])= 
+MAX('P & L Columns'[Col Header]), "Get Job Ready" )
+
+You can see that it displays the text ‘Get Job Ready’ only against ‘2022 Est’ in the Col Header as this was restricted to the selected year
+
+ 
+
+So, how does it display only the year 2022 Est and ignore the rest?
+
+This is possible because the output is based on a condition where the selected year should match with the Col Header value. Since we can select only one fiscal year, there will be only one match and the rest of the Col Header Years will disappear as they have no data / output.
+
+To verify this, do the following -> 
+Click on the drop-down arrow in the Col Header and select ‘Show items with no data’ -   this will show the other columns where there is no data. 
+
+ 
+By default, this feature is disabled which enables us to hide the Col Header values without data.
+
+
+
+
+
+Now, Let’s rebuild our P & L visual.
+
+1. Add Line Item to the matrix
+ 
+
+
+ 2. Replace ‘Get Job Ready’ with ‘P & L Values’ measure 
+
+ You can already see that we have reconstructed the P & L final value measure that we built before.
+
+
+We are few more steps away from completing this formula.
+
+As per our requirement, we need three more columns irrespective of any selection in fy_desc which are LY, YoY Chg and YoY Chg %.
+
+
+Col Header LY should display [P & L LY], YoY Chg should display [P & L YoY Chg], YoY Chg % should display [P & L YoY Chg %]. 
+
+Since this is a multiple condition, it is recommended to use Switch and use the same technique to build the below formula.
+
+     P & L Final Value = 
+    SWITCH(TRUE(),
+    SELECTEDVALUE(fiscal_year[fy_desc])=MAX('P & L Columns'[Col Header]), [P & L values],
+    MAX('P & L Columns'[Col Header])="LY", [P & L LY],
+    MAX('P & L Columns'[Col Header])="YoY Chg",[P & L YoY Chg],
+    MAX('P & L Columns'[Col Header])="YoY Chg %",[P & L YoY Chg %]
+     )
+
+
+
+Note: Irrespective of any selection in the fy_desc we need these three column headers hence they are hard coded in the formula. However, [P & L LY], [P & L YoY Chg], [P & L YoY Chg %] will work based on the selection in fy_desc as they all are still based on SAMEPERIODLASTYEAR() which is dynamic.
+
+And finally, you have our P & L final value measure working as we intended.
+
+
+
+31.  
+
+      
