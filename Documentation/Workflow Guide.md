@@ -874,6 +874,67 @@ Some point:
 
 ## 35. Sales View : 
 
+Any growth company were initially focus on ads and promotions but later on, their operational expenses were reduced when they acquired the market. this view is for sales team view. 
+
+we created:
+- one table containing customer, net sales, gross margin, gross margin %.
+- One scattered plot on x axis net sales and on y axis gross margin inr, in values market, customer; legend region, size net sales, tooltip gross margin INR
+- two donut chart: (net sales, pre_invoice_deduction, total post invoice_deductions), (Total COGS, gross margin) legend-description, values-P&Lvalues.
+- One segment matrix rows segment, category, in values net sales, gross margin, gross margin %.
+
+## 36. Marketing View :
+- one matrix table containing the segment, category, product in rows and  net sales, gross margin, gross margin %, net profit, net profit % in values.
+- One scattered plot on x axis net sales and on y axis gross margin inr, in values segment, category, product; legend division, size net sales, tooltip gross margin INR
+- waterfall chart: category-description, Y axis-P&Lvalues.(for achieving colors green for increase, red for decrease, we (-1) in operational expenses, net profit formula Net Profit INR = [Gross Margin INR]+[operational expense INR], previous it was subtracted to get net profit.)
+- one more matrix table containing the region, the market in rows and  net sales, gross margin, gross margin %, net profit, net profit % in values.
+
+
+## 37. Supply Chain View.
+
+We start by pulling back the lastsalesmonth from the Power BI query. We want to unload fact_sales_monthly from Power BI, but we remember we used this table in the dim_date(ytd_ytg) column.  we replace fact_sales_monthly[date] with Lastsalesmonth[Lastsalesmonth] bcoz it mean the same. by this, we removed load of fact_sales_monthly.
+
+        ytd_ytg = 
+        var LASTSALESDATE = max(Lastsalesmonth[Lastsalesmonth])
+        var FYMONTHNUM = month(DATE(year(LASTSALESDATE), month(LASTSALESDATE)+4, 1))
+        return 
+        IF(dim_date[fy_month_num]>FYMONTHNUM, "YTG","YTD")
+
+we create a measure name sales QTY 
+
+        Sales QTY = CALCULATE([Quantity], FactActualsForecast[date] <= max(Lastsalesmonth[Lastsalesmonth]))
+
+ To verify whether we got the value right, we went to the sales view with copy card visual of sales QTY. in sales table we add quantity measure from key measures, when we tab YTD in 2022 EST year it showing 40 M sales = 40 M sales QTY. without YTD tab, it showing total 90 M Qantity(sales +forecast) and sales QTY = 40 M.
+
+ we create anothers measures
+
+       Forecast QTY = sum(fact_forecast_monthly[forecast_quantity]) # This is showing whole year forecast quantity but we want after lastsalesdate
+       we use this:
+        Forecast QTY = 
+	   var lsalesDate = max(lastsalesMonth[lastsalesmonth])
+           return
+	   calculate(sum(fact_forecast_monthly[forecast_quantity]), fact_forecast_monthly[date]>= lsalesDate
+       
+       
+       Net error = [Forecast QTY]-[Sales QTY] 
+      
+       Net error % = DIVIDE([Net error],[Forecast QTY],0)
+     
+       ABS Error = sumx(DISTINCT(dim_product[product_code]), ABS([Net error]))
+      
+       ABS Error % = DIVIDE ('Key Measures'[ABS Error], [Forecast Qty],0)
+      
+       Forecast Accuracy % = IF(      # By this logic, if the [ABS Error %] is blank the formula will also return blank and hence it won’t be displayed in the table. 
+       'Key Measures'[ABS Error %]<>BLANK(),
+        1-'Key Measures'[ABS Error %],
+        BLANK())
+
+
+       
+   <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Supply%20Chain%20measures.png" class=" center">
+
+
+
+
 
 
 
