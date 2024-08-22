@@ -982,6 +982,15 @@ In essence, dashboards are dynamic and used for monitoring, while reports are st
 
     **its better to make rough dashboard mockup.
 
+    [flaticon](https://www.flaticon.com/) : this is used for getting free icons.
+
+
+40. we started creating our home page and other visuals.
+
+     <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Home%20page.png" class=" center">
+
+    
+
     
 
 
