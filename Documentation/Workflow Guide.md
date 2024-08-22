@@ -957,6 +957,32 @@ Some points:
 
 ### 38. Dashboard Vs Report: 
 
+**Dashboard vs. Report: Key Differences**
+
+- **Dashboard:**
+  - **Purpose:** Provides a real-time, interactive view of key metrics and data points.
+  - **Interactivity:** Highly interactive, allowing users to filter and drill down into data.
+  - **Audience:** Typically for management and executives who need a quick overview.
+  - **Frequency:** Continuously updated with the latest data.
+
+- **Report:**
+  - **Purpose:** Delivers a detailed and static analysis of data, often for specific time periods.
+  - **Interactivity:** Limited or no interactivity; usually a static document.
+  - **Audience:** Used by analysts or stakeholders needing in-depth analysis.
+  - **Frequency:** Generated periodically (e.g., daily, weekly, monthly). 
+
+In essence, dashboards are dynamic and used for monitoring, while reports are static and used for in-depth analysis.
+
+
+39. 15 rules of effective dashboard:
+
+      <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/15%20rules%20of%20dasboard.png" class=" center">
+
+      [Freepik](https://www.freepik.com/) : This site is used for our project design.
+
+    **its better to make rough dashboard mockup.
+
+    
 
 
 
