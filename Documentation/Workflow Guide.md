@@ -985,9 +985,24 @@ In essence, dashboards are dynamic and used for monitoring, while reports are st
     [flaticon](https://www.flaticon.com/) : this is used for getting free icons.
 
 
-40. we started creating our home page and other visuals.
+40. we started creating our home page and other 4 visuals(finance, Sales, Marketing, Supply chain) and also make necessary KPI
 
      <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Home%20page.png" class=" center">
+
+41. Before the stakeholder meeting, they sent a file with UAT(User Acceptance Test) and filled the excel sheet. the idea is to catch the obvious things. Our team already tested from our end before UAT.
+
+    <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Business%20Insights%20UAT.png" class=" center">
+
+- User acceptance testing (a.k.a. UAT) is used for the first round of testing by end-users so that obvious issues can be identified before the solution is released to a broad range of users.
+- Power BI service is a cloud solution to host Power BI dashboards. This is the place from where end users can consume the dashboard.
+- After a report is published to Power BI service, a good practice is to use export the data from the report to excel (Using Analyze in Excel option) and perform data validation in excel (using pivot table etc)
+
+
+42. Stakeholder Analysis and its Significance
+
+
+
+     
 
     
 
