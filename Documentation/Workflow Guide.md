@@ -912,7 +912,7 @@ we create a measure name sales QTY
         Forecast QTY = 
 	   var lsalesDate = max(lastsalesMonth[lastsalesmonth])
            return
-	   calculate(sum(fact_forecast_monthly[forecast_quantity]), fact_forecast_monthly[date]>= lsalesDate
+	   calculate(sum(fact_forecast_monthly[forecast_quantity]), factActualsforecast[date]<= lsalesDate
        
        
        Net error = [Forecast QTY]-[Sales QTY] 
@@ -928,11 +928,34 @@ we create a measure name sales QTY
         1-'Key Measures'[ABS Error %],
         BLANK())
 
+     Forecast acciracy % LY = CALCULATE([Forecast Accuracy %], SAMEPERIODLASTYEAR(dim_date[Date]))
 
-       
-   <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Supply%20Chain%20measures.png" class=" center">
+     Risk = IF([Net error]>0, "Excess Inventory", IF([Net error]<0,"Out of stock", BLANK()))
+
+We start building visual:
+- 3 card visuals of forecast accuracy %, net error, ABS error.
+- one table of customer, forecast accuracy %, net error, ABS error, net error %, forecast accuracy % LY, Risk.
+- one table of segment, category, product, forecast accuracy %, net error, ABS error, net error %, forecast accuracy % LY, Risk.
+- one line and clustered column chart on x axis date, column y axis net error, line y axis forecast accuracy %, forecast accuracy % LY.
 
 
+  <img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Supply%20Chain%20measures.png" class=" center">
+
+
+Some points: 
+1. Reusability helps in getting things done faster. It is a good idea to copy a visual from one page to another and customize it as per new needs
+ 
+2. For the sales team, Gross Margin and Net Sales (Revenue) are more important than the Net Profit as typically they have least or no control over operating expenses.
+ 
+3. For the marketing team, it would be important to understand the marketing spend change over a time period and subsequent Revenue / Gross Margin change.
+ 
+4. For the supply chain team, important metrics are,
+   - Forecast Accuracy & Risk (Out of stock or excess inventory)
+   - Net error and Absolute error
+  
+
+
+### 38. Dashboard Vs Report: 
 
 
 
