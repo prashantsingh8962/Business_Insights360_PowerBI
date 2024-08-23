@@ -998,7 +998,106 @@ In essence, dashboards are dynamic and used for monitoring, while reports are st
 - After a report is published to Power BI service, a good practice is to use export the data from the report to excel (Using Analyze in Excel option) and perform data validation in excel (using pivot table etc)
 
 
-42. Stakeholder Analysis and its Significance
+### 42. Stakeholder Analysis and its Significance :
+   It would help if you did your homework. You can do stakeholder mapping analysis. it's just a game of ego managers.
+
+<img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/Stakholder%20Mapping%20Analysis.png" class=" center">
+
+
+I have invited all of you to the stakeholder meeting.
+
+After the meeting, we do the following changes as per the stake holder:
+
+<img src="https://github.com/prashantsingh8962/Business_Insights360_PowerBI/blob/main/Resources/Doc%20Pics/stakeholder%20Feedback.png" class=" center">
+
+
+
+ A. Quick Fixes - 2022 EST chart does not look correct ( bcoz we put factactualForecast(date) instead of fact_forecast monthly date)
+                - Fix labels supply Chain SC label ( corrected net profit to ABS Error)
+		- Showing Gross margin %, not Gross margin in sales and Marketing view.
+                - show footer last refresh date, values in inr, sales load till date.(we create a measure for last load data and for last refreshed date we create a query 
+                   in power query using M language)
+		        
+	                Measures :
+		        Last sales Month Footer = 
+                        "Sales Data load till : " & FORMAT(max(Lastsalesmonth[Lastsalesmonth]), "MMM YY")
+
+                         M Language :
+			 = #table(type table[Report Last Refreshed=datetime], {{DateTime.LocalNow()}})
+
+B. Implementing dynamic Benchmark
+   - Add Targets(we provided target.xlsx file we it in power BI)<br>
+       we do data modelling by connect month column with dim_date(date) and  market column with dim_market(market).
+
+         create some measures :
+	NS Target = SUM(Targets[ns_target])
+        NP Target = SUM(Targets[np_target])
+        GM Target = SUM(Targets[gm_target])
+	
+	(for eg 30 % of Gm ~ 30% of each customer (most of the cases) but 30 % of net sales <> 30 % of each net sales) that is why, it remains the same in BM.
+ 
+	GM % Target = DIVIDE([GM Target],[NS Target],0)
+        NP % Target = divide([NP Target],[NS Target],0)
+
+ 
+   - Create a dynamic switch between Targets and LY<br>
+         add switch, start with create a table Set BM in which data is like<br>
+	      Benchmark        ID<br>
+               Vs LY             1
+               Vs Target         2
+         drag and drop, make it a slicers with one selection on in slicer settings > selection > on
+      Create a measure NS BM INR
+
+         NS BM INR = 
+         SWITCH(true(),
+         SELECTEDVALUE('Set BM'[ID]) = 1, [Net sales INR LY],
+         SELECTEDVALUE('Set BM'[ID]) = 2, [NS Target])
+
+     drag nad drop it in Net sales KPI's.<br.
+
+     we created a measure for product/customer filter check:<br>
+
+                product/customer filter check: isfiltered(dim_products(product)
+                isfiltered means it will return true when u filter to direct products.otherwise false
+                iscrossfiltered means it will return true when u filter to direct or indirect products.
+
+                Customer / Product filter Check = ISFILTERED(dim_customer[customer]) || ISCROSSFILTERED(dim_product[product])
+
+	        we re-edit this :
+                NS Target = 
+                var tgt = SUM(Targets[ns_target])
+                return if([Customer / Product filter Check],BLANK(),tgt)
+
+                correct this
+                GM % Target = DIVIDE([GM Target], SUM(Targets[ns_target]),0)
+                NP % Target = divide([NP Target],SUM(Targets[ns_target]),0)
+
+
+               2 more measures :
+               GM BM INR = 
+               SWITCH(true(),
+               SELECTEDVALUE('Set BM'[ID]) = 1, [Gross margin % LY],
+               SELECTEDVALUE('Set BM'[ID]) = 2, [GM % Target])
+
+
+
+
+               NP BM INR = 
+               SWITCH(true(),
+               SELECTEDVALUE('Set BM'[ID]) = 1, [Net Profit % LY],
+               SELECTEDVALUE('Set BM'[ID]) = 2, [NP % Target])
+
+
+     we get the switch between Vs LY and Vs targets.
+
+               BM Message = if( [GM % BM]= BLANK() || [NS BM_INR]= BLANK() || [NP % BM] = BLANK(), "BM target(s) is not available for the selected filters.","")
+     
+     
+
+- P & L visuals to compare Target or LY based on Selection
+   we did this for all visuals. start with creating new measures of P & L target value
+
+               
 
 
 
