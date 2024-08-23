@@ -1176,6 +1176,12 @@ E. Create a Tool Tip to Show Trend:
 
 ### 43. Executive view : 
 
+ open market share file in power query, select all manufacturers unpivot it. then extract before delimiter. close & apply !!
+
+ we create some table sub_zone and category for connection in data modelling. we created a ribbon chart.
+
+ now, we have nock up of executive view, we started.
+
 
           
     
