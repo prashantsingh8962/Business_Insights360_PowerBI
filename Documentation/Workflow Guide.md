@@ -1097,12 +1097,87 @@ B. Implementing dynamic Benchmark
 - P & L visuals to compare Target or LY based on Selection
    we did this for all visuals. start with creating new measures of P & L target value
 
-               
+               P & L Targets = 
+               var res = SWITCH(true(),
+              max('P & L Rows'[Order]) = 7, [NS Target]/1000000,
+              max('P & L Rows'[Order]) = 12, [GM Target]/1000000,
+              max('P & L Rows'[Order]) = 13, [GM % Target]*100,
+             max('P & L Rows'[Order]) = 17, [NP % Target]*100
+             )
+             return
+             if(HASONEVALUE('P & L Rows'[Description]),res, [NS Target]/1000000)
+
+
+              P & L BM = 
+          SWITCH(true(),
+          SELECTEDVALUE('Set BM'[ID]) = 1, [P & L LY],
+         SELECTEDVALUE('Set BM'[ID]) = 2, [P & L Targets])
+
+
+do some changing in 
+             
+	       P & L Final Value = 
+    SWITCH(TRUE(),
+    SELECTEDVALUE(Fiscal_year[fy_descrption])=MAX('P & L Columns'[Col Header]), [P & L values],
+    MAX('P & L Columns'[Col Header])="BM", [P & L BM],
+    MAX('P & L Columns'[Col Header])="Chg",[P & L CHG],
+    MAX('P & L Columns'[Col Header])="Chg %",[P & L chg %]
+     )
 
 
 
-     
+     P & L Columns = 
+    var x = ALLNOBLANKROW(Fiscal_year[fy_descrption])
+    return
+     UNION(
+    ROW("Col header","BM"),
+    ROW("Col header","Chg"),
+    ROW("Col header","Chg %"),
+    x
+    )
 
+
+     P & L CHG = 
+    var res = [P & L Values]-[P & L BM]
+    return if(ISBLANK([P & L BM]) || ISBLANK([P & L Values]), BLANK(),res)
+ 
+ 
+    P & L  chg % = 
+    var res = DIVIDE([P & L CHG],[P & L BM],0)*100
+    return if(ISBLANK([P & L BM]) || ISBLANK([P & L Values]), BLANK(),res) 
+
+
+we got the result.!! for graph put this, you get the result.
+
+
+C. Adding Dynamic Slicer to Filter Visual 
+
+    Target Gap tolerance = GENERATESERIES(0, 0.2, 0.01)           ~~~ create a table Target Gap tolerance using modelling > what if parameters
+
+    GM % Variance = [GM % BM]-[Gross Margin %]       
+	   
+    GM % filter = if([GM % Variance] >= SELECTEDVALUE('Target Gap tolerance'[Target Gap tolerance]),1,0)
+
+    use  GM % filter in filter sections, apply only to that visual, condition is equal to 1.
+
+
+D. Create a Toggle Button to Switch between Two Visuals:
+    start with creating a button show NP %, copy it and mark another button Show GM %. make same graph with respect net profit %.
+
+
+     - got to selection, group them as NP % visual( gm % button, NP % visual) and GM % visual(show NP % button, GM % visual)
+     - then create bookmark with uncheck data option, show NP % when GM % visual is hide and then update and show GM % when NP % visual is hide and then update
+     - in visualization go to action choose bookmark navigation to show NP % and show GM% bookmarks.
+
+
+E. Create a Tool Tip to Show Trend:
+       in tooltip, overing is equal to selecting. creating tooltip on GM% and Net sales with respect to month.
+
+
+### 43. Executive view : 
+
+
+          
     
 
     
