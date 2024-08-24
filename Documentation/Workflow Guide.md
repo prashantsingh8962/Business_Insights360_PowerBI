@@ -1180,7 +1180,73 @@ E. Create a Tool Tip to Show Trend:
 
  we create some table sub_zone and category for connection in data modelling. we created a ribbon chart.
 
- now, we have nock up of executive view, we started.
+ 
+ now, we had mock-up of the executive view, we started. 
+ - copy the finance view, we have 3 kpi's(net sales, gross margin %, Net profit%) , fourth one we add from supply chain view forecast accuracy %.
+ - we two donut chart of division and channel with respect to Net sales(both).
+ - Key insights per sub_zone
+
+    A.we create a table with sub_zone, Net sales, Gross margin %, revenue contribution (RC %), Net profit %, Market share % (for atliq, we have to filter with manfacturer in the filter option), net error %, Risk.
+   we used conditional formatting in gross margin % section. click on gross margin % column in visualization section go to condition formatting > icons> choose gm % variance> make the formatting.  
+
+       RC% = DIVIDE([Net Sales], CALCULATE([Net Sales], ALL(Sub_zone[sub_zone])))
+
+ - we make a line and cluster chart with fr_description on x axis, column y axis net sales, line y axis Gross Margin %, Net profit %, Market Share %. but for seeing at atliq, we do same thing for atliq, we have to filter with manfacturer in the filter option and remove interaction: we click on year slicer go to format > edit interaction> off interaction with our graph. at last, it show the right curve. Sort the axis in fy-description and ascending order.
+
+- we make ribbon chart and top 5 customer &  5 product with RC % & Gross Margin %(also used condition formating> icons> choose gm % variance> make the formatting.  
+
+      AtliQ MS % = CALCULATE([Market Share %],'Market Share'[Manufacturer]="atliq")
+      RC% = DIVIDE([Net Sales], CALCULATE([Net Sales], ALL(dim_customer), all(dim_market), all(dim_product)))
+
+
+44. Learn: Performance Optimization(go to performance analyzer in view)
+    start recording> refresh visuals> click on which want  to see ~~ copy query> open DAX studio(paste it there) --- you will a big dax query... if run it it will give you the same result. >click query plan.. server setting --- breakdown into small step, it will show how it perform the query and this help in debugging the query. if query take too long time you can check if it is im balance, formula engine and storage engine. doing this, you can find out why steps are slower in power BI.
+
+    If you want to go technical Refer this [DAX Best Practices 101 for Optimization & Performance with Alberto Ferrari](https://www.youtube.com/live/DSiRHOcI-es?si=9uHbpSo4CDh1IslS)
+
+    Do basic data cleaning amazon_ , AtliQ exclusive and talk to data engineer to resolve this.
+
+45. Some points : 
+- Stakeholder expectation management is one of the most useful skills you can develop in order to become successful in your career.
+- When you are in a stakeholder meeting, it helps if you have a clear understanding of stake holder’s personalities and expectations and drive the discussion accordingly. - Stakeholder mapping is an effective way to gain this understanding.
+- The secret to become “Job Ready”, is to practice job scenarios as much as possible. Try things out on your own and build visualizations that can answer questions related to data analytics.
+-Learning how to create the following features in Power BI are very useful as they can be reused in multiple occasions
+- Using bookmarks & buttons to change visuals / navigate page
+- Using slicers to filter / highlight visuals
+- Switch measures using a toggle button
+
+
+46. Power BI service overview, report sharing and apps:
+     we published a report and extracted the analyzed report in excel. this excel report and power bi , we used to make to apps . microsoft excel , power BI service, teams can easily connected to each other.
+
+    Automate setup data refresh from SQL: we used personal gateway or organisation gateway
+          - establish a personal gateway with SQL.
+          - fill credentials for connection using gateway.
+    
+
+
+    Automate setup data refresh from Excel :
+    SharePoint(drive) moves all local files to SharePoint* Any file you see on the mMSteam is automatically stored on SharePoint(copy URL). Go to the PowerQuery Editor.
+    - new source> SharePoint Folder(paste that URL), you get a query renamed " Excel data Source" .
+    - create a blank() rename " MarketShare Excel Source", click binary in front marketshare, then choose table in front of marketshare. do same for all excel files.
+   
+
+     Simplified: Collaboration, Bookmarks, and Insights in Power BI Service:
+     - we can share on teams and email while filtering things through collaboration.(networking, EPAC)
+     - we also make bookmarks for the same thing.
+     - we also create subscription on a particular view to update you on email.
+     - there is an insight option to generate inside from you.
+   
+
+    Driving the Extra Mile: Documentation and Maintenance:
+           Building info & support pages.
+
+
+    Some point :
+    - Once a dashboard is built, it is important it gets refreshed at regular intervals and includes the latest data points
+    - An automatic refresh can be set for databases such as MySQL using a personal or organizational gateway
+    - An automatic refresh for files (e.g. excel file) can be set up using Microsoft SharePoint
+    - Power BI service as rich support for effective collaboration. One can share exact data points via email or teams chat with other users.
 
 
           
