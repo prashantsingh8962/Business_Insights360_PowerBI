@@ -100,7 +100,7 @@ The dashboard was designed with various views—Finance, Sales, Marketing, Suppl
 The Power BI dashboard provided AtliQ with actionable insights, empowering the company to make informed decisions based on comprehensive data analysis. This project laid the foundation for AtliQ to build a robust analytics team and remain competitive in the industry.
 
 
-**GitHub and Power BI:**
+**GitHub(Optional) and Power BI:**
 Learned how to handle large files using GitHub LFS and optimized Power BI reports for better performance.
 
 
